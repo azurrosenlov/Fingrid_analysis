@@ -2,6 +2,11 @@ import requests
 import datetime
 import json
 
+'''
+Function that extracts yesterdays date, formats the datetime input and 
+connects to the Fingrid API-service.
+Returns the data from the API-service and the date (as the time variable).
+'''
 def elec_generation():
     variableId_elec = 124
     api_code = {'x-api-key' : 'TEy4U6sy7k4QzcDnvhmmWaxblx7FaV1b7Li5s3OM'}
@@ -13,6 +18,10 @@ def elec_generation():
 
 elec_generation()   
 
+'''
+Function that writes the data extracted from the API-service 
+and dumps it into a new .json-file in the current directory.
+'''
 def elec_data_dump():
     res, time = elec_generation()
     with open('Electricity consumption in '+str(time)+'.json', 'w') as dumpfile:
